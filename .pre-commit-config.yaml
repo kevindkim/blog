@@ -1,0 +1,97 @@
+# Pre-commit hooks for Claude Code engineering standards compliance
+# Install with: pre-commit install
+# Run manually: pre-commit run --all-files
+
+default_stages: [commit]
+fail_fast: false
+
+repos:
+  # Local hooks for engineering standards
+  - repo: local
+    hooks:
+      # Prevent hardcoded paths
+      - id: no-hardcoded-paths
+        name: Check for hardcoded paths
+        entry: bash -c 'if grep -r "/Users/kevinkim" --include="*.sh" --include="*.py" --include="*.md" .; then echo "Found hardcoded paths - use environment variables instead"; exit 1; else echo "No hardcoded paths found"; fi'
+        language: system
+        pass_filenames: false
+
+      # Check for dangerous permission bypass flags (with approved exceptions)
+      - id: no-dangerous-permissions
+        name: Check for dangerous permission bypass flags
+        entry: bash -c 'if grep -r "dangerously-skip-permissions" --include="*.sh" . | grep -v "arise.sh"; then echo "Found dangerous permission bypass flags outside approved scripts"; exit 1; else echo "Permission bypass flags only in approved scripts"; fi'
+        language: system
+        pass_filenames: false
+
+      # Enforce file organization
+      - id: file-organization
+        name: Check file organization standards
+        entry: bash -c 'if ls -1 | grep -E "^(COMMAND-|OPTIMIZATION-).*\.md$"; then echo "Optimization files in root directory"; exit 1; else echo "File organization compliant"; fi'
+        language: system
+        pass_filenames: false
+
+      # Run engineering compliance tests
+      - id: engineering-standards-tests
+        name: Run engineering standards compliance tests
+        entry: python3 tests/run_tests.py
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+  # Standard code quality hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Basic file checks
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+        exclude: '\.claude\.json$'  # Exclude Claude's config file
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: mixed-line-ending
+
+      # Security checks
+      - id: detect-private-key
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+
+  # Shell script linting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.5
+    hooks:
+      - id: shellcheck
+        args: [--severity=warning]
+        exclude: 'shell/common-functions\.sh$'  # Skip common functions for now
+
+  # Python code quality
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args: [--max-line-length=100, --ignore=E203,W503]
+
+# Configuration for specific tools
+ci:
+    autofix_commit_msg: |
+        auto-fix: pre-commit hooks
+
+        [pre-commit.ci] auto fixes from hooks
+
+        Generated with [Claude Code](https://claude.ai/code)
+
+        Co-Authored-By: Claude <noreply@anthropic.com>
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: 'chore: pre-commit autoupdate'
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
