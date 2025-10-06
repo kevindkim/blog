@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         <a
           className="mt-4 inline-flex items-center gap-2 text-blue-600 transition hover:text-blue-500 dark:text-blue-400"
-          href="/blog/hello"
+          href="/blog/hello-world"
         >
           Read the sample post →
         </a>
