@@ -9,12 +9,12 @@ pnpm install
 pnpm dev
 ```
 
-Preview environment runs on [http://localhost:3000](http://localhost:3000).
+Preview environment runs on [http://localhost:3000](http://localhost:3000). The App Router powers the homepage, while Nextra handles `/blog` via classic `pages/` routing.
 
 ## Useful Scripts
 
 - `pnpm lint` – ESLint (Next.js preset + import ordering)
 - `pnpm typecheck` – TypeScript strict mode verification (`tsc --noEmit`)
-- `pnpm build` – Production build (also runs lint + type checks)
+- `pnpm build` – Production build (lint + type checks + static export)
 
 Deployments are handled via Vercel; push to a feature branch and open a PR to trigger a preview build.
