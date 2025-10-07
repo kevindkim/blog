@@ -25,7 +25,7 @@ Optional fields:
 ## File locations
 
 - Published posts live in `pages/blog/`
-- Drafts should be stored in `content/blog/` until they are ready, then moved into `pages/blog/`
+- Drafts stay in `content/blog/` while you work on them. When you’re ready to publish, move the file into `pages/blog/` and flip `draft: false` (or remove the field)
 
 ## Filenames
 
@@ -38,6 +38,6 @@ Store assets under `/public/images/<year>/slug-01.webp`. Always provide descript
 ## Workflow checklist
 
 1. Create the MDX file with the schema above.
-2. Keep drafts inside `content/blog/` with `draft: true` until publish-ready.
-3. When promoting to publish, move into `pages/blog/`, set `draft: false`, and ensure required fields are present.
+2. Save drafts in `content/blog/` and set `draft: true` while iterating.
+3. When promoting to publish, move the file into `pages/blog/`, set `draft: false`, and ensure required fields are present.
 4. Run `pnpm lint`, `pnpm typecheck`, and `pnpm build` before opening a PR.
