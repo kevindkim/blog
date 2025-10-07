@@ -1,20 +1,50 @@
 ---
 title: "Hello World"
 slug: "hello-world"
-date: "2025-10-06"
-summary: "First post to validate the publishing pipeline."
-tags: ["meta"]
+date: "2025-10-07"
+summary: "A quick introduction to the site, what I plan to publish, and how to follow along."
+tags: ["meta", "hello"]
 draft: false
 ---
 
 # Hello World
 
-Welcome to the blog! This sample post confirms the Nextra blog theme is wired correctly and that MDX content renders with syntax highlighting.
+Welcome to the very first post on kevind.kim. Rather than leading with a technical deep dive, I wanted to log a quick note about **why this blog exists** and what you can expect to find here over the next few months.
+
+## Why I’m writing
+
+- Capture the thinking behind the projects I ship, not just the code commits.
+- Build a living notebook for experiments in web3, programming, and AI.
+- Leave a breadcrumb trail for future me (and anyone else) when I inevitably forget how something works.
+
+I’ve hesitated to start a public log because “launching a blog” can feel like a huge production. The truth is that shipping is the only way to learn. This post is a tiny win that breaks the inertia.
+
+## What’s coming next
+
+1. **Project write-ups** – transparent retrospectives on whatever is in flight, including the messy parts.
+2. **Engineering notes** – debugging stories, architecture trade-offs, and the occasional code snippet that saved a late night.
+3. **Curated links** – short dispatches when I find a paper, tool, or thread worth saving.
+
+If you found this via a random link: welcome! Feel free to poke around, read the [blog archive](/blog), or bookmark the site for later.
+
+## A tiny snippet
+
+The site runs on Next.js + Nextra with strict TypeScript settings. Here’s the kind of little utility I plan to unpack in future posts:
 
 ```ts
-export const greet = (name: string) => {
-  return `Hello, ${name}!`;
-};
+export function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 ```
 
-> Draft posts will live under `/content/blog` before publication. Move them into `pages/blog/` once they are ready and have complete frontmatter.
+It’s simple, but extracting helpers like this keeps MDX posts focused on content while the UI does the formatting.
+
+## Until next time
+
+If you’d like to see what happens next, keep an eye on the RSS feed (coming soon) or just drop back in from time to time. I’ll be shipping in public and documenting the process here.
+
+> Thanks for reading! If you notice a bug or have questions, the repo is open—feel free to open an issue.
