@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-[60vh] max-w-3xl flex-col gap-10 px-6 py-16">
+    <div className="mx-auto flex min-h-[60vh] max-w-3xl flex-col gap-10 px-6 py-16">
       <section>
         <h1 className="text-3xl font-bold">Kevin D. Kim</h1>
         <p className="mt-2 text-base text-neutral-600 dark:text-neutral-300">
@@ -21,11 +21,11 @@ export default function Home() {
         </p>
         <a
           className="mt-4 inline-flex items-center gap-2 text-blue-600 transition hover:text-blue-500 dark:text-blue-400"
-          href="/blog/hello"
+          href="/blog/hello-world"
         >
           Read the sample post →
         </a>
       </section>
-    </main>
+    </div>
   );
 }

@@ -1,18 +1,24 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Major_Mono_Display, Space_Mono } from "next/font/google";
 import Link from "next/link";
+
+import ThemeToggle from "./theme-toggle";
 
 import type { Metadata } from "next";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceMono = Space_Mono({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const majorMono = Major_Mono_Display({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-major-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100`}
+        className={`${spaceMono.variable} ${majorMono.variable} bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100`}
       >
         <header className="border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
           <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
@@ -42,6 +48,7 @@ export default function RootLayout({
               <Link className="hover:text-blue-600 dark:hover:text-blue-400" href="/about">
                 About
               </Link>
+              <ThemeToggle />
             </div>
           </nav>
         </header>
