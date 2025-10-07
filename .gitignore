@@ -138,8 +138,6 @@ access_token.json
 
 # Repository artifacts and generated content (PROTOCOL ENFORCEMENT)
 _version.py                    # setuptools-scm generated version files
-/package.json                  # Root Node.js files violate project structure
-/package-lock.json             # Root dependency locks
 qa-*.json                      # QA execution logs
 qa-*.txt                       # QA text reports
 qa-*.png                       # QA screenshots
@@ -155,3 +153,9 @@ artifacts/                     # Generated test artifacts
 *console-test.config.ts        # Console-specific configs bypass structured QA
 *critical-error-detection.spec.ts      # One-off critical detection scripts
 debugConsole.ts                # Debug utilities that bypass QA workflow
+/.next
+/out
+.pnpm-debug.log*
+.vercel
+*.tsbuildinfo
+next-env.d.ts
