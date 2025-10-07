@@ -12,6 +12,7 @@
     "sitemap": "tsx scripts/generate-sitemap.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "globby": "^15.0.0",
     "gray-matter": "^4.0.3",
     "next": "15.5.4",

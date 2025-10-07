@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 
@@ -53,6 +54,15 @@ export default function RootLayout({
           </nav>
         </header>
         <main>{children}</main>
+        <footer className="border-t border-neutral-200 bg-white/80 px-6 py-6 text-sm text-neutral-600 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-neutral-400">
+          <div className="mx-auto flex max-w-4xl items-center justify-between">
+            <span>© {new Date().getFullYear()} Kevin D. Kim</span>
+            <Link className="hover:text-blue-600 dark:hover:text-blue-400" href="/privacy">
+              Privacy
+            </Link>
+          </div>
+        </footer>
+        <Analytics />
       </body>
     </html>
   );
