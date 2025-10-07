@@ -17,13 +17,13 @@ export default function Home() {
       <section>
         <h2 className="text-xl font-semibold">Latest Posts</h2>
         <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-          A curated list of recent writing will appear here after we wire frontmatter parsing. For now, explore the blog archive.
+          I post retrospectives, problem-solving notes, and experiments as they ship. Start with the intro below to see what’s on deck.
         </p>
         <a
           className="mt-4 inline-flex items-center gap-2 text-blue-600 transition hover:text-blue-500 dark:text-blue-400"
           href="/blog/hello-world"
         >
-          Read the sample post →
+          Read the Hello World post →
         </a>
       </section>
     </div>
