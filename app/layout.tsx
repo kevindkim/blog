@@ -1,5 +1,4 @@
-import { Analytics } from "@vercel/analytics/react";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { Major_Mono_Display, Space_Mono } from "next/font/google";
 import Link from "next/link";
 
@@ -70,7 +69,7 @@ export default function RootLayout({
             </Link>
           </div>
         </footer>
-        <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
