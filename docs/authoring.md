@@ -40,4 +40,4 @@ Store assets under `/public/images/<year>/slug-01.webp`. Always provide descript
 1. Create the MDX file with the schema above.
 2. Keep drafts inside `content/blog/` with `draft: true` until publish-ready.
 3. When promoting to publish, move into `pages/blog/`, set `draft: false`, and ensure required fields are present.
-4. Run `pnpm lint`, `pnpm typecheck`, and `pnpm build` before opening a PR.
+4. Run `pnpm validate:frontmatter`, `pnpm lint`, `pnpm typecheck`, and `pnpm build` before opening a PR.
