@@ -36,6 +36,10 @@ async function main() {
 
   const errors: string[] = [];
 
+  const allowDrafts =
+    process.env.NODE_ENV === "development" ||
+    process.env.ALLOW_DRAFTS === "true";
+
   for (const file of files) {
     const raw = fs.readFileSync(file, "utf8");
     const { data } = matter(raw);
@@ -47,6 +51,13 @@ async function main() {
         .map((issue) => `• ${issue.path.join(".") || "root"}: ${issue.message}`)
         .join("\n");
       errors.push(`❌ ${relativePath}\n${message}`);
+      continue;
+    }
+
+    if (result.data.draft === true && !allowDrafts) {
+      errors.push(
+        `❌ ${path.relative(process.cwd(), file)}\n• draft: true is only allowed in development or when ALLOW_DRAFTS=true. Move drafts to content/blog/ or publish them with draft: false.`,
+      );
     }
   }
 

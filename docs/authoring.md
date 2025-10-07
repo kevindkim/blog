@@ -41,3 +41,5 @@ Store assets under `/public/images/<year>/slug-01.webp`. Always provide descript
 2. Keep drafts inside `content/blog/` with `draft: true` until publish-ready.
 3. When promoting to publish, move into `pages/blog/`, set `draft: false`, and ensure required fields are present.
 4. Run `pnpm validate:frontmatter`, `pnpm lint`, `pnpm typecheck`, and `pnpm build` before opening a PR.
+   - `pnpm build` (and production CI) will fail automatically if a `draft: true` post lives under `pages/blog/`.
+   - To preview drafts locally during a build, set `ALLOW_DRAFTS=true pnpm build`.
