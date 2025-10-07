@@ -16,8 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin D. Kim",
+  metadataBase: new URL("https://www.kevind.kim"),
+  title: {
+    default: "Kevin D. Kim",
+    template: "%s – Kevin D. Kim",
+  },
   description: "Notes, builds, and experiments across web3, programming, and AI.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
